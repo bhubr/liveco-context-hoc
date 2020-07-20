@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Paragraph from './components/Paragraph'
+import ColorSwitcher from './components/ColorSwitcher'
+import ColorContext from './ColorContext'
 import './App.css';
 
+// Deux composants
+// * ColorSwitcher
+// * Paragraph
+
 function App() {
+  const [color, setColor] = useState('red')
   return (
+    <ColorContext.Provider value={{ color, setColor }}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ColorSwitcher />
+      <Paragraph text="This is some text" />
     </div>
+    </ColorContext.Provider>
   );
 }
 
