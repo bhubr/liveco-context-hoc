@@ -1,18 +1,12 @@
 import React from 'react';
-import ColorContext from '../ColorContext'
+import withColor from '../hoc/withColor'
 
-function Paragraph({ text }) {
+function Paragraph({ color, text }) {
   return (
-    <ColorContext.Consumer>
-    {
-      value => (
-        <p style={{ color: value.color }}>
-          {text}
-        </p>
-      )
-    }
-    </ColorContext.Consumer>
+    <p style={{ color }}>
+      {text}
+    </p>
   )
 }
 
-export default Paragraph
+export default withColor(Paragraph)
